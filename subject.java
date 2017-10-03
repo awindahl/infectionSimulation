@@ -4,25 +4,22 @@ public class subject {
 	public boolean isInfected = false;
 	public boolean isDead = false;
 
-	public int xPos = 0;
-	public int yPos = 0;
+	public int minSick = 0;
+	public int maxSick = 0;
 
-	public void setPos (int x, int y) {
-		this.xPos = x;
-		this.yPos = y;
-	}
-
-	public boolean setStatus (boolean b) {
+	public void setSick (boolean b) {
 		this.isInfected = b;
+	}
+
+	public boolean getSick() {
 		return isInfected;
 	}
 
-	public boolean getStatus() {
-		return isInfected;
-	}
-
-	public boolean setDead(boolean b) {
+	public void setDead(boolean b) {
 		this.isDead = b;
+	}
+
+	public boolean getDead () {
 		return isDead;
 	}
 }

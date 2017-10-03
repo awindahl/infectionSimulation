@@ -28,12 +28,16 @@ public class simulation extends infection {
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid.length; j++) {
 
+				if (hasNeighbour(grid)) {
+					
+				}
+
 				if (infectR <= infectPercent) {
-					grid[i][j].setStatus(true);
+					grid[i][j].setSick(true);
 					infectedToday ++;
 				}
 
-				if (grid[i][j].getStatus()) {
+				if (grid[i][j].getSick()) {
 
 					if (deathR <= deathPercent) {
 					grid[i][j].setDead(true);
@@ -49,7 +53,6 @@ public class simulation extends infection {
 			}
 			System.out.println();
 		}
-
 
 		System.out.println( '\n' + "It is day: " + day + '\n' + "Today " + infectedToday
 			+ " got infected." + '\n' + "The total number of infected are: " + totalNumberOfInfected + '\n'

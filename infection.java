@@ -97,7 +97,7 @@ public class infection {
 				"Whose position is: " + xPosition + ", " + yPosition + '\n' 
 				);
 
-			grid[xPosition][yPosition].setStatus(true);
+			grid[xPosition][yPosition].setSick(true);
 
 			simulation sim = new simulation();
 			sim.execute(grid, minSick, maxSick, deathPercent, infectPercent);
