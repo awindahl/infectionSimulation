@@ -115,9 +115,9 @@ public class infection {
 		if (s.equals("HT15")){
 			
 			totalPopulation = 50;
-			minSick = 4;
-			maxSick = 8;
-			deathPercent = 0.05;
+			minSick = 3;
+			maxSick = 9;
+			deathPercent = 0.0;
 			infectPercent = 0.1;
 			initialIll = 1;
 			xPosition = 25;
@@ -154,10 +154,86 @@ public class infection {
 
 		}
 		if (s.equals("HT16")){
-			System.out.println("LOL");
+			
+			totalPopulation = 50;
+			minSick = 1;
+			maxSick = 12;
+			deathPercent = 0.0;
+			infectPercent = 0.1;
+			initialIll = 1;
+			xPosition = 25;
+			yPosition = 25;
+
+			Random rn = new Random();
+
+			int randomTime = rn.nextInt((maxSick-minSick) + 1) + minSick;
+
+			subject[][] grid = new subject[totalPopulation][totalPopulation];
+
+			for (int i = 0; i < totalPopulation; i++) {
+				for (int j = 0; j < totalPopulation; j++) {
+					grid[i][j] = new subject();
+				}
+			}
+
+			System.out.println(
+				"Great, the parameters are," + '\n' +
+				"Population: " + totalPopulation + '\n' +
+				"Probability of death: " + deathPercent + '\n' +
+				"Probability of infection: " + infectPercent + '\n' +
+				"Minimum days a person can be sick: " + minSick + '\n' +
+				"Maximum days a person can be sick: " + maxSick + '\n' +
+				"The number of people who are ill from the start: " + initialIll + '\n' +
+				"Whose position is: " + xPosition + ", " + yPosition + '\n' 
+				);
+
+			grid[xPosition][yPosition].setSick(true);
+			grid[xPosition][yPosition].setTime(randomTime);
+
+			simulation sim = new simulation();
+			sim.execute(grid, deathPercent, infectPercent, maxSick, minSick);
+
 		}
 		if (s.equals("HT17")){
-			System.out.println("LOL");
+
+			totalPopulation = 40;
+			minSick = 6;
+			maxSick = 9;
+			deathPercent = 0.0;
+			infectPercent = 0.1;
+			initialIll = 1;
+			xPosition = 20;
+			yPosition = 20;
+
+			Random rn = new Random();
+
+			int randomTime = rn.nextInt((maxSick-minSick) + 1) + minSick;
+
+			subject[][] grid = new subject[totalPopulation][totalPopulation];
+
+			for (int i = 0; i < totalPopulation; i++) {
+				for (int j = 0; j < totalPopulation; j++) {
+					grid[i][j] = new subject();
+				}
+			}
+
+			System.out.println(
+				"Great, the parameters are," + '\n' +
+				"Population: " + totalPopulation + '\n' +
+				"Probability of death: " + deathPercent + '\n' +
+				"Probability of infection: " + infectPercent + '\n' +
+				"Minimum days a person can be sick: " + minSick + '\n' +
+				"Maximum days a person can be sick: " + maxSick + '\n' +
+				"The number of people who are ill from the start: " + initialIll + '\n' +
+				"Whose position is: " + xPosition + ", " + yPosition + '\n' 
+				);
+
+			grid[xPosition][yPosition].setSick(true);
+			grid[xPosition][yPosition].setTime(randomTime);
+
+			simulation sim = new simulation();
+			sim.execute(grid, deathPercent, infectPercent, maxSick, minSick);
+
 		}
 	}
 

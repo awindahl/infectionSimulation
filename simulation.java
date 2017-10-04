@@ -18,8 +18,6 @@ public class simulation extends infection {
 
 		int randomTime = rn.nextInt((maxSick-minSick) + 1) + minSick;
 
-		System.out.println(randomTime);
-
 		int diedToday = 0;
 		int infectedToday = 0;
 
