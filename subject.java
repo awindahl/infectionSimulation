@@ -3,8 +3,17 @@ public class subject {
 
 	public boolean isInfected = false;
 	public boolean isDead = false;
+	public boolean isDisabled = false;
 
 	public int sickTime = 0;
+
+	public void setDisabled (boolean b) {
+		this.isDisabled = b;
+	}
+
+	public boolean isDisabled () {
+		return isDisabled;
+	}
 
 	public void setSick (boolean b) {
 		this.isInfected = b;

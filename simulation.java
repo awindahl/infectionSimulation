@@ -12,7 +12,7 @@ public class simulation extends infection {
 
 		String x = "X";
 		String o = "o";
-		String d = "d";
+		String d = ".";
 
 		Random rn = new Random();
 
@@ -36,8 +36,9 @@ public class simulation extends infection {
 				hasNeighbour hn = new hasNeighbour();
 
 				if (infectR <= infectPercent) {
-					if (hn.check(grid, i, j) && grid[i][j].getSick() == false && grid[i][j].getDead() == false) {
+					if (hn.check(grid, i, j) && !grid[i][j].getSick() && !grid[i][j].getDead()) {
 						grid[i][j].setSick(true);
+						grid[i][j].setDisabled(true);
 						grid[i][j].setTime(randomTime);
 						infectedToday ++;
 					}
@@ -45,7 +46,7 @@ public class simulation extends infection {
 
 				if (grid[i][j].getSick()) {
 
-					if (deathR <= deathPercent) {
+					if (deathR <= deathPercent && grid[i][j].isDisabled) {
 						grid[i][j].setDead(true);
 						grid[i][j].setSick(false);
 						System.out.print(" " + d );
@@ -71,6 +72,12 @@ public class simulation extends infection {
 				}
 			}
 			System.out.println();
+		}
+
+		for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid.length; j++) {
+				grid[i][j].setDisabled(false);
+			}
 		}
 
 		totalNumberOfDead += diedToday;

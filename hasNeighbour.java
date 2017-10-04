@@ -6,6 +6,7 @@ public class hasNeighbour {
 				if (i>=1 && j >= 1) {
 
 					if (grid[i-1][j-1].getSick() == true) {
+						grid[i-1][j-1].setDisabled(true);
 						return true;
 					}
 				}
@@ -13,7 +14,7 @@ public class hasNeighbour {
 				if (i >= 1) {
 
 					if (grid[i-1][j].getSick() == true) {
-						
+						grid[i-1][j].setDisabled(true);
 						return true;
 					}
 				}
@@ -21,6 +22,7 @@ public class hasNeighbour {
 				if (i >= 1 && j < grid.length-1) {
 					
 					if (grid[i-1][j+1].getSick() == true) {
+						grid[i-1][j+1].setDisabled(true);
 						return true;
 					}	
 				}
@@ -29,6 +31,7 @@ public class hasNeighbour {
 				if (j>= 1) {
 
 					if (grid[i][j-1].getSick() == true) {
+						grid[i][j-1].setDisabled(true);
 						return true;
 					}
 				}
@@ -36,6 +39,7 @@ public class hasNeighbour {
 				if (j < grid.length-1) {
 
 					if (grid[i][j+1].getSick() == true) {
+						grid[i][j+1].setDisabled(true);
 						return true;
 					}	
 				}
@@ -45,6 +49,7 @@ public class hasNeighbour {
 				if (i < grid.length-1 && j >= 1) {
 					
 					if (grid[i+1][j-1].getSick() == true) {
+						grid[i+1][j-1].setDisabled(true);
 						return true;
 					}
 				}
@@ -52,6 +57,7 @@ public class hasNeighbour {
 				if ( i < grid.length-1) {
 
 					if (grid[i+1][j].getSick() == true) {
+						grid[i+1][j].setDisabled(true);
 						return true;
 					}
 				}
@@ -59,6 +65,7 @@ public class hasNeighbour {
 				if (i < grid.length-1 && j < grid.length-1) {
 					
 					if (grid[i+1][j+1].getSick() == true) {
+						grid[i+1][j+1].setDisabled(true);
 						return true;
 					}
 				}
