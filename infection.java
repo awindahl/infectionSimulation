@@ -21,9 +21,9 @@ public class infection {
 
 		System.out.println
 		(
-		"Hello and welcome to the infection chamber." + '\n' +
+		"Hello and welcome to the infection testchamber." + '\n' +
 		"To start, we need you to enter a few values." + '\n' +
-		"First of all, are you doing a custom test?" +'\n'+
+		"First of all, are you performing a custom test?" +'\n'+
 		"Please answer Yes, or No." + '\n'
 		);
 
@@ -41,7 +41,7 @@ public class infection {
 		}
 
 		else {
-			System.out.println ("Please restart.");
+			System.out.println ("Shutting down...");
 		}
 	}
 
@@ -118,7 +118,7 @@ public class infection {
 			minSick = 3;
 			maxSick = 9;
 			deathPercent = 0.0;
-			infectPercent = 0.1;
+			infectPercent = 0.20;
 			initialIll = 1;
 			xPosition = 25;
 			yPosition = 25;
@@ -158,8 +158,8 @@ public class infection {
 			totalPopulation = 50;
 			minSick = 1;
 			maxSick = 12;
-			deathPercent = 0.0;
-			infectPercent = 0.1;
+			deathPercent = 0.05;
+			infectPercent = 0.20;
 			initialIll = 1;
 			xPosition = 25;
 			yPosition = 25;
@@ -200,7 +200,7 @@ public class infection {
 			minSick = 6;
 			maxSick = 9;
 			deathPercent = 0.0;
-			infectPercent = 0.1;
+			infectPercent = 0.40;
 			initialIll = 1;
 			xPosition = 20;
 			yPosition = 20;
@@ -238,16 +238,73 @@ public class infection {
 	}
 
 
-
-
 	public static void customTest() {
-		System.out.println("LOL");
+		
+		int 		 totalPopulation;
+		double 		 deathPercent;
+		double 		 infectPercent;
+		int 		 minSick;
+		int 		 maxSick;
+		int 		 initialIll;
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Ok, great. Keep in mind, the test will be performed in an " + '\n' +
+			"NxN grid. This means the total population will be NxN large. How big is N?");
+
+		totalPopulation = sc.nextInt();
+
+		System.out.println("Ok, " + totalPopulation*totalPopulation + " people will be tested." + '\n' +
+			"How many are sick from the start?");
+
+		initialIll = sc.nextInt();
+		int[] xPosition = new int[initialIll];
+		int[] yPosition = new int[initialIll];
+
+		for (int i = 0; i < initialIll; i++) {
+			System.out.println("Where is patient# " + i + " located?" + '\n' + 
+				"Please write one value at a time.");
+			xPosition[i] = sc.nextInt();
+			yPosition[i] = sc.nextInt();
+		}
+
+		System.out.println("What is the minimum amount of days a subject can be sick?");
+
+		minSick = sc.nextInt();
+
+		System.out.println("What is the maximum amount of days a subject can be sick?");
+
+		maxSick = sc.nextInt();	
+
+		System.out.println("How likely is it that a person will die?" + '\n' + 
+			"Answer with a decimal. eg 0.20 for twenty percent.");
+
+		deathPercent = sc.nextDouble();	
+
+		System.out.println("How likely is it that a person will infect an adjacent subject?" + '\n' + 
+			"Answer with a decimal. eg 0.20 for twenty percent.");	
+
+		infectPercent = sc.nextDouble();
+
+		Random rn = new Random();
+
+		int randomTime = rn.nextInt((maxSick-minSick) + 1) + minSick;
+
+		subject[][] grid = new subject[totalPopulation][totalPopulation];
+
+		for (int i = 0; i < totalPopulation; i++) {
+			for (int j = 0; j < totalPopulation; j++) {
+				grid[i][j] = new subject();
+			}
+		}
+
+		for (int i = 0; i < initialIll; i++) {
+			grid[xPosition[i]][yPosition[i]].setSick(true);	
+			grid[xPosition[i]][yPosition[i]].setTime(randomTime);
+		}
+
+		simulation sim = new simulation();
+		sim.execute(grid, deathPercent, infectPercent, maxSick, minSick);
+
 	}
-
-
-
-
-
-
-
 }
