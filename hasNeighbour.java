@@ -5,7 +5,7 @@ public class hasNeighbour {
 				//check top row
 				if (i>=1 && j >= 1) {
 
-					if (grid[i-1][j-1].getSick() == true) {
+					if (grid[i-1][j-1].getSick() & !grid[i-1][j-1].isDisabled) {
 						grid[i-1][j-1].setDisabled(true);
 						return true;
 					}
@@ -13,7 +13,7 @@ public class hasNeighbour {
 
 				if (i >= 1) {
 
-					if (grid[i-1][j].getSick() == true) {
+					if (grid[i-1][j].getSick() && !grid[i-1][j].isDisabled) {
 						grid[i-1][j].setDisabled(true);
 						return true;
 					}
@@ -21,7 +21,7 @@ public class hasNeighbour {
 
 				if (i >= 1 && j < grid.length-1) {
 					
-					if (grid[i-1][j+1].getSick() == true) {
+					if (grid[i-1][j+1].getSick()&& !grid[i-1][j+1].isDisabled) {
 						grid[i-1][j+1].setDisabled(true);
 						return true;
 					}	
@@ -30,7 +30,7 @@ public class hasNeighbour {
 				//check middle row
 				if (j>= 1) {
 
-					if (grid[i][j-1].getSick() == true) {
+					if (grid[i][j-1].getSick() && !grid[i][j-1].isDisabled) {
 						grid[i][j-1].setDisabled(true);
 						return true;
 					}
@@ -38,7 +38,7 @@ public class hasNeighbour {
 
 				if (j < grid.length-1) {
 
-					if (grid[i][j+1].getSick() == true) {
+					if (grid[i][j+1].getSick() && !grid[i][j+1].isDisabled) {
 						grid[i][j+1].setDisabled(true);
 						return true;
 					}	
@@ -48,7 +48,7 @@ public class hasNeighbour {
 
 				if (i < grid.length-1 && j >= 1) {
 					
-					if (grid[i+1][j-1].getSick() == true) {
+					if (grid[i+1][j-1].getSick() && !grid[i+1][j-1].isDisabled) {
 						grid[i+1][j-1].setDisabled(true);
 						return true;
 					}
@@ -56,7 +56,7 @@ public class hasNeighbour {
 
 				if ( i < grid.length-1) {
 
-					if (grid[i+1][j].getSick() == true) {
+					if (grid[i+1][j].getSick() && !grid[i+1][j].isDisabled) {
 						grid[i+1][j].setDisabled(true);
 						return true;
 					}
@@ -64,7 +64,7 @@ public class hasNeighbour {
 
 				if (i < grid.length-1 && j < grid.length-1) {
 					
-					if (grid[i+1][j+1].getSick() == true) {
+					if (grid[i+1][j+1].getSick() && !grid[i+1][j+1].isDisabled) {
 						grid[i+1][j+1].setDisabled(true);
 						return true;
 					}
