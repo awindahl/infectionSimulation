@@ -13,6 +13,7 @@ public class simulation extends infection {
 		String x = "X";
 		String o = "o";
 		String d = ".";
+		int sickTotal = 0;
 
 		Random rn = new Random();
 
@@ -38,6 +39,7 @@ public class simulation extends infection {
 					if (infectR <= infectPercent) {
 						if (hn.check(grid, i, j) && !grid[i][j].getSick() && !grid[i][j].getDead()) {
 							grid[i][j].setSick(true);
+							grid[i][j].setBeenSick(true);
 							grid[i][j].setDisabled(true);
 							grid[i][j].setTime(randomTime);
 							infectedToday ++;
@@ -76,6 +78,9 @@ public class simulation extends infection {
 			for (int i = 0; i < grid.length; i++) {
 				for (int j = 0; j < grid.length; j++) {
 					grid[i][j].setDisabled(false);
+					if(grid[i][j].getBeenSick()) {
+						sickTotal++;
+					}
 				}
 			}
 		}
@@ -88,6 +93,8 @@ public class simulation extends infection {
 				if (grid[i][j].getSick()) {
 					System.out.print(" " + x);
 					totalNumberOfInfected++;
+					grid[i][j].setBeenSick(true);
+					sickTotal++;
 				}
 				else {
 					System.out.print(" " + o);
@@ -105,7 +112,8 @@ public class simulation extends infection {
 		System.out.println( '\n' + "It is day: " + day + '\n' + "Today " + infectedToday
 			+ " got infected." + '\n' + "The total number of infected are: " + totalNumberOfInfected + '\n'
 			+ "Today " + diedToday + " people died." + '\n' + "The total number of dead is: "
-			+ totalNumberOfDead  + '\n' + "Today " + peopleRecovered + " people recovered from the infection.");
+			+ totalNumberOfDead  + '\n' + "Today " + peopleRecovered + " people recovered from the infection." + '\n' +
+			"The number of people who have ever been sick is: " + sickTotal);
 
 		day++;
 

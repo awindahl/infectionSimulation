@@ -4,8 +4,17 @@ public class subject {
 	public boolean isInfected = false;
 	public boolean isDead = false;
 	public boolean isDisabled = false;
+	public boolean beenSickEver = false;
 
 	public int sickTime = 0;
+
+	public void setBeenSick(boolean b) {
+		this.beenSickEver = b;
+	}
+
+	public boolean getBeenSick() {
+		return beenSickEver;
+	}
 
 	public void setDisabled (boolean b) {
 		this.isDisabled = b;
