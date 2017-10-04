@@ -7,13 +7,18 @@ public class simulation extends infection {
 	int totalNumberOfInfected = 0;
 	int totalNumberOfDead = 0;
 
-	public void execute (subject[][] grid, int minSick, int maxSick, double deathPercent, double infectPercent) {
+
+	public void execute (subject[][] grid, double deathPercent, double infectPercent, int maxSick, int minSick) {
 
 		String x = "X";
 		String o = "o";
 		String d = "d";
 
 		Random rn = new Random();
+
+		int randomTime = rn.nextInt((maxSick-minSick) + 1) + minSick;
+
+		System.out.println(randomTime);
 
 		int diedToday = 0;
 		int infectedToday = 0;
@@ -31,8 +36,9 @@ public class simulation extends infection {
 				hasNeighbour hn = new hasNeighbour();
 
 				if (infectR <= infectPercent) {
-					if (hn.check(grid, i, j)) {
+					if (hn.check(grid, i, j) && grid[i][j].getSick() == false && grid[i][j].getDead() == false) {
 						grid[i][j].setSick(true);
+						grid[i][j].setTime(randomTime);
 						infectedToday ++;
 					}
 				}
@@ -41,18 +47,36 @@ public class simulation extends infection {
 
 					if (deathR <= deathPercent) {
 						grid[i][j].setDead(true);
+						grid[i][j].setSick(false);
 						System.out.print(" " + d );
-				} 
-				else {
+						diedToday++;
+					} else {
+
+					if (grid[i][j].getTime() > 0) {
+						grid[i][j].countDown();
 						System.out.print(" " + x);
-						
+					} else {
+
+						grid[i][j].setSick(false);
+						peopleRecovered++;
+						System.out.print(" " + o);
+						}
 					}
 				} else {
+					if (grid[i][j].getDead()) {
+						System.out.print(" " + d);
+					} else {
 					System.out.print(" " + o);
+					}
 				}
 			}
 			System.out.println();
 		}
+
+		totalNumberOfDead += diedToday;
+		totalNumberOfInfected += infectedToday;
+		totalNumberOfInfected -= peopleRecovered;
+		totalNumberOfInfected -= diedToday; 
 
 		System.out.println( '\n' + "It is day: " + day + '\n' + "Today " + infectedToday
 			+ " got infected." + '\n' + "The total number of infected are: " + totalNumberOfInfected + '\n'
@@ -65,7 +89,7 @@ public class simulation extends infection {
 		String s = sc.nextLine();
 
 		if (s.equals("")){
-			execute(grid, minSick, maxSick, deathPercent, infectPercent);
+			execute(grid, deathPercent, infectPercent, maxSick, minSick);
 		}
 
  	}

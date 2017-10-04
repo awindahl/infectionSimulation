@@ -4,8 +4,7 @@ public class subject {
 	public boolean isInfected = false;
 	public boolean isDead = false;
 
-	public int minSick = 0;
-	public int maxSick = 0;
+	public int sickTime = 0;
 
 	public void setSick (boolean b) {
 		this.isInfected = b;
@@ -22,4 +21,17 @@ public class subject {
 	public boolean getDead () {
 		return isDead;
 	}
+
+	public void setTime(int y) {
+		this.sickTime = y;
+	}
+
+	public int getTime() {
+		return sickTime;
+	}
+
+	public void countDown() {
+		this.sickTime = this.sickTime-1;
+	}
+
 }

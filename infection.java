@@ -1,14 +1,17 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class infection {
 
 		/**
-		Code written by Alexander Windahl
+		Code written by Alexander Windahl on 2/10-17 and is available
+		at https://github.com/awindahl/infectionSimulation
+
 		Purpose of program is to test infection spread rate based
 		on user inputs. Creative liberties were taken when designing
 		user interaction
 
-		This program is free software and published under GPL 3.0
+		This program is free software and published under LGPL 3.0
 
 		**/
 
@@ -72,11 +75,15 @@ public class infection {
 			totalPopulation = 50;
 			minSick = 4;
 			maxSick = 8;
-			deathPercent = 0;
+			deathPercent = 0.05;
 			infectPercent = 0.1;
 			initialIll = 1;
 			xPosition = 25;
 			yPosition = 25;
+
+			Random rn = new Random();
+
+			int randomTime = rn.nextInt((maxSick-minSick) + 1) + minSick;
 
 			subject[][] grid = new subject[totalPopulation][totalPopulation];
 
@@ -98,9 +105,10 @@ public class infection {
 				);
 
 			grid[xPosition][yPosition].setSick(true);
+			grid[xPosition][yPosition].setTime(randomTime);
 
 			simulation sim = new simulation();
-			sim.execute(grid, minSick, maxSick, deathPercent, infectPercent);
+			sim.execute(grid, deathPercent, infectPercent, maxSick, minSick);
 
 		}
 
