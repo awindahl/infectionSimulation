@@ -14,15 +14,11 @@ public class simulation extends infection {
 		String d = "d";
 
 		Random rn = new Random();
-		double infectR = rn.nextDouble();
-		double deathR = rn.nextDouble();
 
 		int diedToday = 0;
 		int infectedToday = 0;
 
 		int peopleRecovered = 0;
-
-		hasNeighbour hn = new hasNeighbour();
 
 
 		Scanner sc = new Scanner(System.in);
@@ -30,8 +26,12 @@ public class simulation extends infection {
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid.length; j++) {
 
-				if (hn.check(grid)) {
-					if (infectR <= infectPercent) {
+				double infectR  = 	  rn.nextDouble();
+				double deathR   =	  rn.nextDouble();
+				hasNeighbour hn = new hasNeighbour();
+
+				if (infectR <= infectPercent) {
+					if (hn.check(grid, i, j)) {
 						grid[i][j].setSick(true);
 						infectedToday ++;
 					}
@@ -40,12 +40,12 @@ public class simulation extends infection {
 				if (grid[i][j].getSick()) {
 
 					if (deathR <= deathPercent) {
-					grid[i][j].setDead(true);
-					System.out.print(" " + d );
+						grid[i][j].setDead(true);
+						System.out.print(" " + d );
 				} 
 				else {
 						System.out.print(" " + x);
-						totalNumberOfInfected ++;
+						
 					}
 				} else {
 					System.out.print(" " + o);
