@@ -75,8 +75,8 @@ public class infection {
 			totalPopulation = 50;
 			minSick = 4;
 			maxSick = 8;
-			deathPercent = 0.05;
-			infectPercent = 0.1;
+			deathPercent = 0.0;
+			infectPercent = 0.05;
 			initialIll = 1;
 			xPosition = 25;
 			yPosition = 25;
@@ -118,7 +118,7 @@ public class infection {
 			minSick = 3;
 			maxSick = 9;
 			deathPercent = 0.0;
-			infectPercent = 0.20;
+			infectPercent = 0.10;
 			initialIll = 1;
 			xPosition = 25;
 			yPosition = 25;
@@ -158,7 +158,7 @@ public class infection {
 			totalPopulation = 50;
 			minSick = 1;
 			maxSick = 12;
-			deathPercent = 0.05;
+			deathPercent = 0.0;
 			infectPercent = 0.20;
 			initialIll = 1;
 			xPosition = 25;
