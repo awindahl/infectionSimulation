@@ -37,7 +37,7 @@ public class simulation extends infection {
 					hasNeighbour hn = new hasNeighbour();
 
 					if (infectR <= infectPercent) {
-						if (hn.check(grid, i, j) && !grid[i][j].getSick() && !grid[i][j].getDead()) {
+						if (hn.check(grid, i, j) && !grid[i][j].getSick() && !grid[i][j].getDead() && !grid[i][j].getBeenSick()) {
 							grid[i][j].setSick(true);
 							grid[i][j].setBeenSick(true);
 							grid[i][j].setDisabled(true);
